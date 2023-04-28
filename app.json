@@ -15,17 +15,25 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "package": "de.codext.chatgptreactnativeplayground",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "de.codext.chatgptreactnativeplayground"
+      "package": "de.codext.chatgptreactnativeplayground",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "60b64171-6fb9-478d-ae34-addb1f7da522"
+      }
     }
   }
 }
