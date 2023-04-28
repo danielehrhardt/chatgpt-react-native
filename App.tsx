@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import ChatScreen from './src/screens/ChatScreen';
+import { TouchableOpacity } from 'react-native';
+import SettingsScreen from './src/screens/SettingsScreen';
+import {Text} from 'react-native';
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const App: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="ChatScreen"
+        component={ChatScreen}
+        options={({navigation}) => ({
+          title: 'ChatGPT',
+          headerRight: () => (
+            <TouchableOpacity
+              style={{paddingHorizontal: 15}}
+              onPress={() => navigation.navigate('SettingsScreen')}>
+              <Text style={{color: '#1a73e8'}}>Settings</Text>
+            </TouchableOpacity>
+          ),
+        })}
+      />
+      <Stack.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={{title: 'Settings'}}
+      />
+    </Stack.Navigator>
+  </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
